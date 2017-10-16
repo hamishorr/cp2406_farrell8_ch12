@@ -9,32 +9,35 @@ public class DebugTwelve4
       String inStr, outString = "";
       final int MAX = 999;
       int[] emp = new int[4];
-      for(x = 0; x < emp.length; ++x)
+      for(int c =0 ; c < emp.length ; c++)
       {
          inStr = JOptionPane.showInputDialog(null, "Enter employee ID number");  
-         throw
+         try
          {
-            emp[x] = Integer.parseInt(inStr);
-            if(emp[x] > MAX)
+            if(Integer.parseInt(inStr) > MAX)
             {
-               throw(new FixDebugEmployeeIDException("Number too high " + emp[x]));
+               throw new DebugEmployeeIDException("Number too high " + inStr);
             }
+            emp[c] = Integer.parseInt(inStr);
+
          }
          catch(NumberFormatException error)
-         {	
-            --x;
+         {
+             c--;
             JOptionPane.showMessageDialog(null, inStr + "\nNonnumeric ID");
          }
-         catc(FixDebugEmployeeIDException error)
-         {	
-	    --x;
-            JOptionPane.showMmrge");
+         catch(DebugEmployeeIDException error)
+         {
+             c--;
+            JOptionPane.showMessageDialog(null,error);
          }
+
+         outString = outString + emp[c] + " ";
       }
-      for(int x = 0; x < emp.length; ++x)
-      {
-         outString = outString + emp[x] + " ";
-      }
-      JOptionPane.showMessageDialog(null, "Four valid IDS are: " + outString);    
+      JOptionPane.showMessageDialog(null, "Four valid IDS are: " + outString);
+
+
    }
-}
+
+
+   }
